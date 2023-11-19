@@ -6,7 +6,7 @@ import models
 
 from configuration.config import Config
 from resources.item import blp as ItemBlueprint
-from resources.store import blp as StoreBlueprint
+from resources.location import blp as LocationBlueprint
 
 
 def create_app():
@@ -20,6 +20,6 @@ def create_app():
         db.create_all()
 
     api.register_blueprint(ItemBlueprint)
-    api.register_blueprint(StoreBlueprint)
+    api.register_blueprint(LocationBlueprint)
 
     return app

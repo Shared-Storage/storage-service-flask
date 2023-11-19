@@ -10,27 +10,26 @@ class PlainItemSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
     img = fields.Str(required=True)
-    location = fields.Str()
     note = fields.Str()
 
 
-class PlainStoreSchema(Schema):
+class PlainLocationSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
 
 
-class StoreSchema(PlainStoreSchema):
+class LocationSchema(PlainLocationSchema):
     items = fields.List(fields.Nested(PlainItemSchema()), dump_only=True)
 
 
 class ItemSchema(PlainItemSchema):
-    store_id = fields.Str(required=True, load_only=True)
-    store = fields.Nested(PlainStoreSchema(), dump_only=True)
+    location_id = fields.Str(required=True, load_only=True)
+    location = fields.Nested(PlainLocationSchema(), dump_only=True)
 
 
 class ItemUpdateSchema(Schema):
     name = fields.Str()
     img = fields.Str()
-    location = fields.Str()
     note = fields.Str()
+    location_id = fields.Str()
 
