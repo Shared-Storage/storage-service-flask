@@ -11,4 +11,5 @@ class LocationModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
+    organization_id = db.Column(db.String(120), nullable=False)
     items = db.relationship("ItemModel", back_populates="location", lazy="dynamic")

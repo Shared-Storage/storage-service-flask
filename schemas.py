@@ -16,6 +16,7 @@ class PlainItemSchema(Schema):
 class PlainLocationSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
+    organization_id = fields.Str(required=True)
 
 
 class LocationSchema(PlainLocationSchema):

@@ -44,3 +44,9 @@ class LocationList(MethodView):
         except SQLAlchemyError:
             abort(500, message="Error occurred while creating the location.")
 
+
+@blp.route("/locations/<string:organization_id>")
+class LocationByOrganization(MethodView):
+    @blp.response(200, LocationSchema(many=True))
+    def get(self, organization_id):
+        return LocationModel.query.filter_by(organization_id=organization_id).all()
