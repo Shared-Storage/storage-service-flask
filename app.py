@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_smorest import Api
+from flask_cors import CORS
 
 from db import db
 import models
@@ -13,7 +14,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)
-
+    CORS(app)
     api = Api(app)
 
     with app.app_context():
