@@ -62,3 +62,10 @@ class ItemList(MethodView):
             print(e)
             abort(500, message="An error occurred while inserting the item")
         return item
+
+
+@blp.route("/items/<string:organization_id>")
+class ItemByOrganization(MethodView):
+    @blp.response(200, ItemSchema(many=True))
+    def get(self, organization_id):
+        return ItemModel.query.filter_by(organization_id=organization_id).all()
