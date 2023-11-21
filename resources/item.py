@@ -32,6 +32,7 @@ class Item(MethodView):
             item.img = item_data['img']
             item.location_id = item_data['location_id']
             item.note = item_data['note']
+            item.organization_id = item_data['organization_id']
         else:
             item = ItemModel(id=item_id, **item_data)
         db.session.add(item)

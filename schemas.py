@@ -10,6 +10,7 @@ class PlainItemSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
     img = fields.Str(required=True)
+    organization_id = fields.Str(required=True)
     note = fields.Str()
 
 
@@ -34,4 +35,5 @@ class ItemUpdateSchema(Schema):
     img = fields.Str()
     note = fields.Str()
     location_id = fields.Str()
+    organization_id = fields.Str()
 
