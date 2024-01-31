@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_smorest import Api
 from flask_cors import CORS
+from flask_migrate import Migrate
 
 from db import db
 import models
@@ -15,6 +16,7 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
     CORS(app)
+    migrate = Migrate(app, db)
     api = Api(app)
 
     with app.app_context():
